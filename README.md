@@ -1,2 +1,2 @@
-# hfpef-supranormal-ejection-fraction-exercise-endotype
-Analysis code and supporting materials for “HFpEF with supranormal ejection fraction is a distinct exercise endotype and a candidate for cardiac myosin inhibition”.
+# hfpef-supranormal-ejection-fraction-imaging-and-proteomics
+Imaging and plasma proteomics analyses characterizing exercise responses in HFpEF with supranormal ejection fraction, linking cardiovascular physiology to circulating molecular signatures.
