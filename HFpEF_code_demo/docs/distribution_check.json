@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "date": "2026-10-19",
+  "package_revision": 3,
+  "distribution_scope": "R code, English documentation, tests, synthetic inputs, empty results placeholder",
+  "file_count": 35,
+  "checks": {
+    "Chinese_characters_in_filenames_or_text": "no matches",
+    "personal_absolute_paths": "no matches",
+    "personal_names_or_cloud_folders": "no matches",
+    "known_study_identifier_patterns": "no matches",
+    "email_addresses": "no matches",
+    "private_keys": "no matches",
+    "access_token_patterns": "no matches",
+    "unexpected_files_or_symlinks": "none"
+  },
+  "input_provenance": "All supplied inputs reproduced byte-for-byte by the independent fixed-seed generator",
+  "synthetic_identifier_and_medication_checks": "passed",
+  "workflow_completed": true,
+  "validation_checks_passed": 23,
+  "figures_and_tables_generated": 12,
+  "executable_R_code_unchanged_in_language_review": true,
+  "Fig4d_included": true,
+  "TableS14_included": true,
+  "Fig4d_default": "Offline fictional-set demonstration; not an Enrichr reproduction",
+  "TableS14_status": "Reconstructed prevalence-centred paired interaction model",
+  "live_enrichr_executed": false,
+  "study_data_included": false,
+  "online_repository_reviewed": false,
+  "limitations": "Checks apply to this distribution. Exact final-author numerical reproduction and existing online repository history have not been verified."
+}
