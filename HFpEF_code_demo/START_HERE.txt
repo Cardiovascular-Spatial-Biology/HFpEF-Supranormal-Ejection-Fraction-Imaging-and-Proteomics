@@ -1,0 +1,41 @@
+HFpEF imaging and proteomics: quick start
+
+1. Open HFpEF_code_demo.Rproj in RStudio.
+2. Install missing packages once:
+   source("install_dependencies.R")
+3. Run the workflow in a fresh R session:
+   source("run_all.R")
+
+Package installation requires internet access. The default analysis runs
+entirely offline with the supplied synthetic data.
+
+Results are written to results/demo/. If that folder already contains files,
+a new timestamped output folder is created. No personal path edits are needed.
+
+From a terminal in the project folder:
+   Rscript run_all.R
+   Rscript tests/validate_demo.R
+
+Included analyses
+- Paired limma exercise-response models, overlap counts and ternary plot.
+- Tissue-associated response plots.
+- Resting comparisons, PCA and PLS-DA.
+- CAMERA associations with imaging and clinical variables.
+- Fig 4d pathway enrichment and Table S14 medication sensitivity.
+
+The example contains 48 fictional participants, 96 paired samples and
+480 assays. SYN means synthetic: SYN_P001 is a fictional participant ID
+with no link to a real person. Expression values, medication fields,
+tissue annotations and pathway memberships are all generated from scratch.
+
+These data demonstrate the workflow and do not reproduce study findings.
+Several modules were reconstructed from available methods and have not
+been matched to the final manuscript outputs. Clinical-imaging statistics,
+pressure-volume modelling and digital-twin simulations are not included.
+
+Further documentation
+- README.md: commands, scope and module list.
+- docs/DATA_DICTIONARY.md: file formats and field definitions.
+- docs/METHODS_AND_PROVENANCE.md: analytical methods and source status.
+- docs/FIG4D_AND_TABLES14.md: enrichment modes and medication contrasts.
+- docs/VALIDATION.md: checks performed.
