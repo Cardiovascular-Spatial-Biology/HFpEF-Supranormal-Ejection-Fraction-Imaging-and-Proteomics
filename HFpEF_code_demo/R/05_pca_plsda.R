@@ -1,3 +1,4 @@
+
 run_pca_plsda <- function(input, cfg, out_dir, label) {
   rest <- log2(input$rest + 1)
   rest <- rest[apply(rest, 1, stats::var) > 0, , drop = FALSE]
