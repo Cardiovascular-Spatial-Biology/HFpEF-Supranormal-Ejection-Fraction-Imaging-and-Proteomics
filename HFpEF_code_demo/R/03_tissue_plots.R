@@ -1,5 +1,4 @@
 # Retains the available script's rule on the LISTED tissue nTPM values.
-# This summary field alone does not verify a comparison with all other tissues.
 parse_tissue <- function(value, fold) {
   if (is.na(value) || !nzchar(value)) return(NA_character_)
   parts <- trimws(strsplit(value, ";", fixed = TRUE)[[1]])
