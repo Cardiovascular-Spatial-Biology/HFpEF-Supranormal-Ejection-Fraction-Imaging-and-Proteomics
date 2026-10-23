@@ -1,7 +1,5 @@
 # HFpEF imaging and proteomics
 
-R scripts for Fig 4b, c, e, f and g, Fig S4, Fig S5 and Table S14.
-
 The supplied data are synthetic: 48 fictional participants, 96 paired samples and 480 assays. Demo outputs are not the study results. See [Methods](docs/METHODS_AND_PROVENANCE.md) for implementation details and limitations.
 
 ## Run
