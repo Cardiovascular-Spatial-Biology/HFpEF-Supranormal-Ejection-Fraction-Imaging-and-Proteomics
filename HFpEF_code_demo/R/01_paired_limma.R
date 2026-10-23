@@ -1,4 +1,4 @@
-# Fig 4b analytical core: retain the original group-wise model and moderation.
+# Fig 4b analytical core
 run_paired_limma <- function(input, cfg, out_dir) {
   results <- list(); diagnostics <- list()
   for (group in cfg$groups) {
