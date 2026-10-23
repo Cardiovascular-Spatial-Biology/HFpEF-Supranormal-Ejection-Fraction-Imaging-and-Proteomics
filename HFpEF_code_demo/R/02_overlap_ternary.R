@@ -1,3 +1,4 @@
+
 run_overlap_ternary <- function(results, cfg, out_dir, label) {
   ids <- results$Control$SeqId
   merged <- results$Control[, c("SeqId", "GeneSymbol"), drop = FALSE]
