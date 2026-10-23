@@ -1,8 +1,5 @@
-# hfpef-supranormal-ejection-fraction-imaging-and-proteomics
-Imaging and plasma proteomics analyses characterizing exercise responses in HFpEF with supranormal ejection fraction, linking cardiovascular physiology to circulating molecular signatures.
+# HFpEF imaging and proteomics
 
-## Analysis code and synthetic demonstration
+Code for **HFpEF with supranormal ejection fraction is a distinct exercise endotype and a candidate for cardiac myosin inhibition**.
 
-The runnable R workflow, synthetic input matrices and documentation are in [HFpEF_code_demo](HFpEF_code_demo/).
-
-Start with the [README and run instructions](HFpEF_code_demo/README.md). All participant records supplied within that folder are synthetic. Demonstration outputs are not the study's numerical results; the documentation identifies reconstructed analyses and their limitations.
+[Run the analysis](HFpEF_code_demo/README.md) using the supplied synthetic demonstration data. Demo outputs are not the study results.

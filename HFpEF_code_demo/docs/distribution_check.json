@@ -1,27 +1,12 @@
 {
   "status": "passed",
   "date": "2026-10-23",
-  "package_revision": 4,
-  "distribution_scope": "R code, documentation, tests, synthetic inputs, empty results placeholder",
+  "package_revision": 5,
+  "scope": "HFpEF_code_demo current files",
   "file_count": 34,
-  "checks": {
-    "Chinese_characters_in_filenames_or_text": "no matches",
-    "personal_absolute_paths": "no matches",
-    "personal_names_or_cloud_folders": "no matches",
-    "known_study_identifier_patterns": "no matches",
-    "email_addresses": "no matches",
-    "private_keys": "no matches",
-    "access_token_patterns": "no matches",
-    "unexpected_files_or_symlinks": "none"
-  },
-  "input_provenance": "All supplied inputs reproduced byte-for-byte by the independent fixed-seed generator",
-  "synthetic_identifier_and_medication_checks": "passed",
+  "supplied_data": "independently generated synthetic data",
   "workflow_completed": true,
   "validation_checks_passed": 16,
   "figures_and_tables_generated": 11,
-  "Fig4d_included": false,
-  "TableS14_included": true,
-  "TableS14_status": "Reconstructed prevalence-centred paired interaction model",
-  "study_data_included": false,
-  "limitations": "Checks apply to this demonstration folder. Exact final-author numerical reproduction and repository history are outside this validation."
+  "content_scan": "No personal paths, known study identifiers or credential patterns found"
 }

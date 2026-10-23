@@ -1,24 +1,12 @@
 # HFpEF imaging and proteomics
 
-Analysis code for **HFpEF with supranormal ejection fraction is a distinct exercise endotype and a candidate for cardiac myosin inhibition**.
+R scripts for Fig 4b, c, e, f and g, Fig S4, Fig S5 and Table S14.
 
-This R workflow includes synthetic data for running the proteomics analyses. All supplied participant records are fictional. 
+The supplied data are synthetic: 48 fictional participants, 96 paired samples and 480 assays. Demo outputs are not the study results. See [Methods](docs/METHODS_AND_PROVENANCE.md) for implementation details and limitations.
 
-## Quick start
+## Run
 
-In RStudio, open `HFpEF_code_demo.Rproj`, then run:
-
-```r
-# Install missing dependencies once; internet access is required.
-source("install_dependencies.R")
-
-# Run the analysis in a fresh R session.
-source("run_all.R")
-```
-
-The default run reads `data/synthetic/` and writes figures and tables to `results/demo/`. It runs offline after dependencies are installed. If that output folder is already populated, a subsequent run creates a timestamped folder under `results/`.
-
-Alternatively, run these commands from the project folder:
+From this folder:
 
 ```sh
 Rscript install_dependencies.R
@@ -26,54 +14,33 @@ Rscript run_all.R
 Rscript tests/validate_demo.R
 ```
 
-The validation script checks the supplied inputs and analytical functions. Its CAMERA output check uses `results/demo/`, so run the workflow first. See [Validation](docs/VALIDATION.md) for the checks performed.
+In RStudio, open `HFpEF_code_demo.Rproj`, then use `source("install_dependencies.R")` and `source("run_all.R")` in a fresh session. Installation requires internet access; the analysis runs offline.
 
-To choose a different output folder:
+Inputs are in `data/synthetic/`. Results are saved to `results/demo/` as PDF, PNG and CSV files. Later runs use a timestamped folder if `results/demo/` is populated. The validation command checks CAMERA outputs in `results/demo/`.
 
-```sh
-Rscript run_all.R --out results/my_run
-```
+## Scripts
 
-An explicitly selected output folder must be empty or new. Input files are not overwritten, and no personal working-directory setting is needed.
-
-## Included analyses
-
-| Module | Analysis | Figure or table; status |
+| Script | Analysis | Figure/table |
 |---|---|---|
-| `R/01_paired_limma.R` | Paired exercise response within each group, adjusted for age, sex, BMI and baseline cystatin | Fig 4b analytical core; verified against the available study results |
-| `R/02_overlap_ternary.R` | Overlap counts, Venn diagram and ternary plot | Fig 4b-c; regenerated layout |
-| `R/03_tissue_plots.R` | Tissue-associated exercise responses with corrected assay-ID mapping | Fig 4e-f; regenerated layout |
-| `R/04_resting_comparisons.R` | Unadjusted resting HFpEF versus control and higherEF versus lowerEF comparisons | Fig S4; reconstructed |
-| `R/05_pca_plsda.R` | Resting PCA and two PLS-DA displays, with corrected X-variance labels | Fig S5a-c |
-| `R/06_camera_pathways.R` | Associations between protein changes and imaging/clinical variables | Fig 4g; reconstructed; final study reference files are not supplied |
-| `R/08_medication_sensitivity.R` | Six medication classes, each with a main effect and an exercise interaction | Table S14; reconstructed; the exercise contrast requires confirmation against the final author model |
+| `R/01_paired_limma.R` | Paired exercise-response models | Fig 4b core analysis |
+| `R/02_overlap_ternary.R` | Venn diagram and ternary plot | Fig 4b-c |
+| `R/03_tissue_plots.R` | Tissue-associated responses | Fig 4e-f |
+| `R/04_resting_comparisons.R` | Resting group comparisons | Fig S4 |
+| `R/05_pca_plsda.R` | PCA and PLS-DA | Fig S5a-c |
+| `R/06_camera_pathways.R` | Protein-change associations with imaging/clinical variables | Fig 4g |
+| `R/08_medication_sensitivity.R` | Medication sensitivity models | Table S14 |
 
-`R/00_common.R` provides input checks, ID matching and shared functions. Analysis settings are in `config.R`; `run_all.R` loads and runs the modules.
+Settings are in `config.R`; shared input checks are in `R/00_common.R`.
 
-Fig 4d was generated using a web-based tool and is not included in this package. The workflow retains Fig 4b, c, e, f and g.
+## Data and options
 
-Table S14 reports medication-adjusted average exercise responses and interaction tests. Definitions and assumptions are documented in [Table S14](docs/TABLES14.md).
-
-Clinical-imaging statistics, pressure-volume modelling and digital-twin simulations are outside the scope of this package. This folder is not a complete reproduction of every analysis in the manuscript.
-
-## Data
-
-The example contains **48 fictional participants, 96 paired samples, 480 assays and 400 gene labels**. Eight CSV/TSV input files provide expression matrices, sample metadata, phenotype fields, feature annotations and reference sets. File formats and units are described in the [Data dictionary](docs/DATA_DICTIONARY.md).
-
-`SYN` stands for **synthetic**. For example, `SYN_P001` identifies fictional participant 001. These identifiers have no link to real participants. Medication fields are also synthetic.
-
-To recreate the supplied data in a new folder:
+`SYN` means synthetic. All supplied expression values, participant records and reference annotations are fictional. File formats are listed in the [Data dictionary](docs/DATA_DICTIONARY.md).
 
 ```sh
+Rscript run_all.R --data YOUR_DATA_DIRECTORY --out YOUR_OUTPUT_DIRECTORY
 Rscript generate_demo.R --out data/synthetic_regenerated
 ```
 
-The generator uses seed `20261019` and reads no study files. It refuses to overwrite a nonempty destination. Neither the expression values nor the reference annotations were derived by modifying patient records.
+Custom inputs must match the documented schema. Output and regenerated-data folders must be empty or new. Keep real participant data outside this public package.
 
-## Outputs and reproducibility
-
-Figures are saved as PDF and PNG; model results, mappings and sample counts are saved as CSV. Demonstration figures are labelled as synthetic. Each run records input checksums and software versions without personal paths or a full session dump.
-
-[Software versions](docs/software_versions.csv) records the tested environment; it is not a dependency lockfile. [SHA256SUMS.txt](docs/SHA256SUMS.txt) records the distributed files. [distribution_check.json](docs/distribution_check.json) summarises the file-content review.
-
-The distribution contains code, synthetic inputs, documentation and tests. Generated results, private data directories, local configuration and session caches are excluded by `.gitignore`. Review any additional files before publishing them; ignored files can still be added explicitly to Git.
+[Validation](docs/VALIDATION.md) · [Software versions](docs/software_versions.csv) · [File checksums](docs/SHA256SUMS.txt)
