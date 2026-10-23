@@ -2,7 +2,7 @@
 
 Analysis code for **HFpEF with supranormal ejection fraction is a distinct exercise endotype and a candidate for cardiac myosin inhibition**.
 
-This R workflow includes synthetic data for running the proteomics analyses. All supplied participant records, expression values, identifiers, tissue annotations and pathway memberships are fictional. The demonstration illustrates the analysis procedures; its numerical results are not study findings.
+This R workflow includes synthetic data for running the proteomics analyses. All supplied participant records are fictional. 
 
 Some modules preserve verified analytical code. Others were reconstructed from the available scripts and written methods and have not been matched to the final manuscript results. Their status is listed below and in [Methods and provenance](docs/METHODS_AND_PROVENANCE.md).
 
