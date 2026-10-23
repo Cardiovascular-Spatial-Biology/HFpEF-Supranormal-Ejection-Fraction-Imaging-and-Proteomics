@@ -1,5 +1,4 @@
-# Reconstructed from the final manuscript's unadjusted comparisons.
-# Not yet verified against the author's final numerical outputs.
+# 
 run_resting_comparisons <- function(input, cfg, out_dir, label) {
   for (comparison in c("HFpEF_vs_Control", "higherEF_vs_lowerEF")) {
     p <- input$pheno
