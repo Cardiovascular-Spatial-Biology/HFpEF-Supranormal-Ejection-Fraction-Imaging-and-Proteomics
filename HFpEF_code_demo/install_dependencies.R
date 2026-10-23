@@ -1,4 +1,4 @@
-# Run manually once. Analysis scripts do not install packages or download data.
+# Run manually once. Analysis scripts do not install packages or download data
 cran <- c("ggplot2","ggrepel","statmod","VennDiagram","BiocManager")
 missing <- cran[!vapply(cran,requireNamespace,logical(1),quietly=TRUE)]
 if (length(missing)) install.packages(missing,repos="https://cloud.r-project.org")
