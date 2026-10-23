@@ -1,5 +1,4 @@
-# Table S14 reconstructed from the table caption and written methods.
-# Centering drug exposure defines the exercise effect at observed drug prevalence.
+# Table S14 
 fit_medication_response <- function(input,patient_ids,drug=NULL) {
   p <- input$pheno[patient_ids,,drop=FALSE]
   y <- cbind(log2(input$rest[,patient_ids,drop=FALSE]),log2(input$stress[,patient_ids,drop=FALSE]))
