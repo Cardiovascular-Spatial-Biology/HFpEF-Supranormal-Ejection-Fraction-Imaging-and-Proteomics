@@ -9,6 +9,6 @@ DrugCentered <- Drug - mean(Drug)
 ~ Condition * DrugCentered + Age + Sex + BMI + BaselineCystatin
 ```
 
-The exercise coefficient estimates the response at the observed medication prevalence. The interaction estimates the user-minus-non-user difference in exercise response. BH correction is over all assays within each group, drug and contrast. This reconstructed contrast has not been matched to the final author model.
+The exercise coefficient estimates the response at the observed medication prevalence. The interaction estimates the user-minus-non-user difference in exercise response. BH correction is over all assays within each group, drug and contrast. 
 
 The baseline set requires FDR <0.05 and |log2FC| >log2(1.25). Retention counts baseline assays with adjusted FDR <0.05 on the same participants. CSV outputs also report fold-change retention, direction, interactions and sample counts. Fewer than two users or non-users, or a rank-deficient model, is marked not estimable.
