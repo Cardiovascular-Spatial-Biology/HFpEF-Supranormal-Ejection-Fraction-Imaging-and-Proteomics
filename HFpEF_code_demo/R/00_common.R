@@ -4,7 +4,6 @@ require_packages <- function() {
   if (length(missing)) stop("Install missing packages using install_dependencies.R: ",
                             paste(missing, collapse = ", "), call. = FALSE)
 }
-
 assert <- function(ok, message) {
   if (!isTRUE(ok)) stop(message, call. = FALSE)
 }
