@@ -109,7 +109,7 @@ draw_camera_map <- function(links, cfg, out_dir, label) {
     graphics::par(mar = c(0,0,0,0), family = "sans")
     graphics::plot.new(); graphics::plot.window(xlim = c(0,1), ylim = c(0,1), xaxs = "i", yaxs = "i")
     graphics::text(.5,.97,"Imaging / clinical variables and pathway families", font = 2, cex = 1.1)
-    graphics::text(.5,.93,"Reconstructed CAMERA workflow - width counts pathways, not independent evidence", cex = .72)
+    graphics::text(.5,.93,"CAMERA workflow - width counts pathways, not independent evidence", cex = .72)
     cols <- c(positive = "#b2182b", negative = "#2166ac", mixed = "#888888")
     for (i in seq_len(nrow(links))) {
       t <- seq(0,1,length.out = 80); u <- t*t*(3-2*t)
