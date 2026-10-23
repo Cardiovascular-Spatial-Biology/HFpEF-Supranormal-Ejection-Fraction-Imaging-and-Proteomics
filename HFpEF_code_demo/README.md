@@ -4,8 +4,6 @@ Analysis code for **HFpEF with supranormal ejection fraction is a distinct exerc
 
 This R workflow includes synthetic data for running the proteomics analyses. All supplied participant records are fictional. 
 
-Some modules preserve verified analytical code. Others were reconstructed from the available scripts and written methods and have not been matched to the final manuscript results. Their status is listed below and in [Methods and provenance](docs/METHODS_AND_PROVENANCE.md).
-
 ## Quick start
 
 In RStudio, open `HFpEF_code_demo.Rproj`, then run:
