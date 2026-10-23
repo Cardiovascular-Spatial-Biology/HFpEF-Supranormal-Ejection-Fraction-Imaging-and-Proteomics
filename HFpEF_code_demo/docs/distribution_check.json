@@ -1,12 +1,13 @@
 {
   "status": "passed",
   "date": "2026-10-23",
-  "package_revision": 5,
+  "package_revision": 6,
   "scope": "HFpEF_code_demo current files",
   "file_count": 34,
   "supplied_data": "independently generated synthetic data",
   "workflow_completed": true,
-  "validation_checks_passed": 16,
+  "validation_checks_passed": 17,
   "figures_and_tables_generated": 11,
-  "content_scan": "No personal paths, known study identifiers or credential patterns found"
+  "content_scan": "No personal paths, known study identifiers or credential patterns found",
+  "synthetic_generator_version": 2
 }

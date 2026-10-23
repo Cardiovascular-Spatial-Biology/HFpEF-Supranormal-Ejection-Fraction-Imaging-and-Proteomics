@@ -27,13 +27,27 @@ generate_demo <- function(out_dir, seed = 20261019L) {
   baseline_gene <- rnorm(ng,10,1.0) + shared
   baseline_gene[81:100,group!="Control"] <- baseline_gene[81:100,group!="Control"] + .65
   baseline <- baseline_gene[gene_index,] + matrix(rnorm(na*n,0,.06),na,n)
-  change_gene <- matrix(rnorm(ng*n,0,.14),ng,n)
-  change_gene[1:35,] <- change_gene[1:35,] + .55
-  change_gene[36:60,] <- change_gene[36:60,] - .50
-  change_gene[101:120,group=="higherEF"] <- change_gene[101:120,group=="higherEF"] + .65
-  change_gene[121:140,group=="lowerEF"] <- change_gene[121:140,group=="lowerEF"] - .65
-  change_gene[141:155,group=="Control"] <- change_gene[141:155,group=="Control"] + .65
-  change_gene[161:180,group!="Control"] <- change_gene[161:180,group!="Control"] + .55
+  # Seven response patterns cover each group, each pair and all three groups.
+  response_patterns <- list(
+    list(rows=1:60, groups=c("Control","higherEF","lowerEF")),
+    list(rows=101:120, groups="higherEF"),
+    list(rows=121:140, groups="lowerEF"),
+    list(rows=141:155, groups="Control"),
+    list(rows=161:180, groups=c("higherEF","lowerEF")),
+    list(rows=281:300, groups=c("Control","higherEF")),
+    list(rows=301:320, groups=c("Control","lowerEF"))
+  )
+  change_sd <- runif(ng,.12,.35)
+  change_gene <- matrix(rnorm(ng*n),ng,n) * change_sd
+  for (pattern in response_patterns) {
+    rows <- pattern$rows
+    # Signed log2 effects vary by gene, with modest variation across active groups.
+    effect <- sample(c(-1,1),length(rows),replace=TRUE) * runif(length(rows),.20,.80)
+    for (g in pattern$groups) {
+      group_effect <- effect * runif(length(rows),.85,1.15)
+      change_gene[rows,group==g] <- change_gene[rows,group==g] + group_effect
+    }
+  }
   change_gene[201:220,] <- change_gene[201:220,] + rep(.35*z_ci,each=20)
   change_gene[241:260,] <- change_gene[241:260,] - rep(.35*z_la,each=20)
   # Correlated responses within invented pathway blocks exercise CAMERA's correlation handling.
@@ -89,9 +103,10 @@ generate_demo <- function(out_dir, seed = 20261019L) {
   write.csv(features,file.path(out_dir,"featuredata.csv"),row.names=FALSE)
   write.table(atlas,file.path(out_dir,"proteinatlas.tsv"),sep="\t",quote=TRUE,row.names=FALSE)
   write.table(pathways,file.path(out_dir,"pathways.tsv"),sep="\t",quote=TRUE,row.names=FALSE)
-  writeLines(c("SYNTHETIC DATA ONLY",paste("Seed:",seed),
+  writeLines(c("SYNTHETIC DATA ONLY","Generator version: 2",paste("Seed:",seed),
     "48 fictional participants; 96 paired samples; 480 fictional assays mapping to 400 fictional genes.",
     "Created from independent random numbers and explicitly invented effects.",
+    "Seven group-response patterns with variable signed effects and gene-specific noise.",
     "No study matrix, patient values, patient identifiers, or real annotation files were read.",
     "Tissue annotations and pathway memberships are fictional; they have no biological meaning.",
     "Six binary medication fields are independently invented; 1=use, 0=no use. No medication effect was inserted."),

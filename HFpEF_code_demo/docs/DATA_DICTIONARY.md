@@ -15,6 +15,8 @@ All files below are in `data/synthetic/` and contain synthetic values. `SYN_` id
 
 `SYNTHETIC_DATA.txt` records the generator seed.
 
+The simulation includes responses in each group alone, each pair and all three groups, with variable signed effects and gene-specific noise. Parameters are invented and are not fitted to study data.
+
 ## Phenotype fields
 
 | Field | Type / intended units | Role |

@@ -1,7 +1,9 @@
 SYNTHETIC DATA ONLY
+Generator version: 2
 Seed: 20261019
 48 fictional participants; 96 paired samples; 480 fictional assays mapping to 400 fictional genes.
 Created from independent random numbers and explicitly invented effects.
+Seven group-response patterns with variable signed effects and gene-specific noise.
 No study matrix, patient values, patient identifiers, or real annotation files were read.
 Tissue annotations and pathway memberships are fictional; they have no biological meaning.
 Six binary medication fields are independently invented; 1=use, 0=no use. No medication effect was inserted.

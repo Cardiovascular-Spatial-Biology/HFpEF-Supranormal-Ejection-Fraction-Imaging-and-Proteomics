@@ -46,6 +46,14 @@ for (group in config$groups) {
                        unname(as.matrix(y[c("logFC","t","adj.P.Val")])),tolerance=1e-8)),
         paste("ID matching preserves paired limma estimates:",group))
 }
+# Independent set encoding checks that the default demo covers every Venn region.
+assays <- input$features$SeqId
+flags <- vapply(config$groups,function(group) {
+  d <- a[[group]]
+  d$SignificantFDRandFC[match(assays,d$SeqId)]
+},logical(length(assays)))
+region <- as.vector(flags %*% c(1L,2L,4L))
+check(all(0:7 %in% region),"Synthetic data cover all seven overlaps and non-significant assays")
 bad <- read_table(file.path(shuffled,"phenotypedata.csv")); bad$PatientID[2] <- bad$PatientID[1]
 write_csv(bad,file.path(shuffled,"phenotypedata.csv"))
 error <- tryCatch({load_inputs(shuffled,config); ""},error=function(e) conditionMessage(e))
