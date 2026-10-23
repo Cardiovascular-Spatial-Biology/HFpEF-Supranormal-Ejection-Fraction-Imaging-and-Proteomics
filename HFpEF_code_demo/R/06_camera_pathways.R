@@ -1,5 +1,4 @@
-# Reconstructed from the final written methods plus the available CAMERA core.
-# Reference pathway membership/families must be supplied explicitly and versioned.
+# 
 select_gene_assays <- function(input) {
   hf <- input$pheno$PatientID[input$pheno$Phenotype != "Control"]
   f <- input$features
