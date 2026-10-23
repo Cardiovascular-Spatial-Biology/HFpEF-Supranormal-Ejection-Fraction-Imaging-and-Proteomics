@@ -46,12 +46,13 @@ An explicitly selected output folder must be empty or new. Input files are not o
 | `R/04_resting_comparisons.R` | Unadjusted resting HFpEF versus control and higherEF versus lowerEF comparisons | Fig S4; reconstructed |
 | `R/05_pca_plsda.R` | Resting PCA and two PLS-DA displays, with corrected X-variance labels | Fig S5a-c |
 | `R/06_camera_pathways.R` | Associations between protein changes and imaging/clinical variables | Fig 4g; reconstructed; final study reference files are not supplied |
-| `R/07_pathway_enrichment.R` | Measured-background enrichment and grouped dot plot | Fig 4d; reconstructed; fictional pathways in the default demonstration |
 | `R/08_medication_sensitivity.R` | Six medication classes, each with a main effect and an exercise interaction | Table S14; reconstructed; the exercise contrast requires confirmation against the final author model |
 
 `R/00_common.R` provides input checks, ID matching and shared functions. Analysis settings are in `config.R`; `run_all.R` loads and runs the modules.
 
-Fig 4d uses an offline hypergeometric test on fictional pathways by default. Optional modes read Enrichr exports or submit gene lists to Enrichr with a measured-gene background. Table S14 reports medication-adjusted average exercise responses and interaction tests. Definitions, assumptions and optional modes are documented in [Fig 4d and Table S14](docs/FIG4D_AND_TABLES14.md).
+Fig 4d was generated using a web-based tool and is not included in this package. The workflow retains Fig 4b, c, e, f and g.
+
+Table S14 reports medication-adjusted average exercise responses and interaction tests. Definitions and assumptions are documented in [Table S14](docs/TABLES14.md).
 
 Clinical-imaging statistics, pressure-volume modelling and digital-twin simulations are outside the scope of this package. This folder is not a complete reproduction of every analysis in the manuscript.
 

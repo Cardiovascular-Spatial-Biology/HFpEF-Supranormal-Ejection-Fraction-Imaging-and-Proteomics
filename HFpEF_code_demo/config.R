@@ -13,11 +13,6 @@ config <- list(
   camera_set_min = 10L,
   camera_set_max = 500L,
   camera_top_nominal = 10L,
-  enrichment_mode = "demo_local", # demo_local, enrichr_exports, or enrichr_live
-  enrichment_library = "Reactome_Pathways_2024",
-  enrichment_top_per_category = 3L,
-  enrichment_export_dir = "enrichr_exports",
-  allow_enrichr_network = FALSE, # run_all.R enables only with --allow-enrichr-network
   medication_columns = c("ACEi", "ARB", "MRA", "BetaBlocker", "SGLT2i", "LoopDiuretic"),
   medication_labels = c(ACEi = "ACE inhibitor", ARB = "Angiotensin receptor blocker",
     MRA = "Mineralocorticoid receptor antagonist", BetaBlocker = "Beta blocker",

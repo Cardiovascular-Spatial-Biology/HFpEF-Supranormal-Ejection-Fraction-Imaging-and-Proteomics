@@ -21,7 +21,10 @@ Included analyses
 - Tissue-associated response plots.
 - Resting comparisons, PCA and PLS-DA.
 - CAMERA associations with imaging and clinical variables.
-- Fig 4d pathway enrichment and Table S14 medication sensitivity.
+- Table S14 medication sensitivity.
+
+Fig 4b, c, e, f and g are included. Fig 4d was generated using a web-based
+tool and is not included in this package.
 
 The example contains 48 fictional participants, 96 paired samples and
 480 assays. SYN means synthetic: SYN_P001 is a fictional participant ID
@@ -37,5 +40,5 @@ Further documentation
 - README.md: commands, scope and module list.
 - docs/DATA_DICTIONARY.md: file formats and field definitions.
 - docs/METHODS_AND_PROVENANCE.md: analytical methods and source status.
-- docs/FIG4D_AND_TABLES14.md: enrichment modes and medication contrasts.
+- docs/TABLES14.md: medication models and contrasts.
 - docs/VALIDATION.md: checks performed.

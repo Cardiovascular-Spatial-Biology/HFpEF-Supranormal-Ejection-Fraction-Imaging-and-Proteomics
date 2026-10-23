@@ -12,10 +12,9 @@ arg <- function(flag, default) {
   args[i+1L]
 }
 if ("--help" %in% args) {
-  cat("Usage: Rscript run_all.R [--data DIRECTORY] [--out DIRECTORY] [--allow-enrichr-network]\n")
+  cat("Usage: Rscript run_all.R [--data DIRECTORY] [--out DIRECTORY]\n")
 } else {
   source(file.path(root, "config.R"))
-  config$allow_enrichr_network <- "--allow-enrichr-network" %in% args
   for (file in sort(list.files(file.path(root,"R"), pattern="\\.R$", full.names=TRUE))) source(file)
   require_packages()
   data_dir <- normalizePath(arg("--data", file.path(root,"data","synthetic")), mustWork=TRUE)
@@ -31,27 +30,25 @@ if ("--help" %in% args) {
   set.seed(config$seed)
   message("Validating inputs (",label,")")
   input <- load_inputs(data_dir,config)
-  message("1/8 Paired limma and exercise-response overlaps")
+  message("1/7 Paired limma and exercise-response overlaps")
   results <- run_paired_limma(input,config,out_dir)
   run_overlap_ternary(results,config,out_dir,label)
-  message("2/8 Tissue-associated exercise response")
+  message("2/7 Tissue-associated exercise response")
   run_tissue_plots(input,results,config,out_dir,label)
-  message("3/8 Unadjusted resting comparisons (reconstructed)")
+  message("3/7 Unadjusted resting comparisons (reconstructed)")
   run_resting_comparisons(input,config,out_dir,label)
-  message("4/8 PCA and PLS-DA")
+  message("4/7 PCA and PLS-DA")
   run_pca_plsda(input,config,out_dir,label)
-  message("5/8 CAMERA pathways (reconstructed)")
+  message("5/7 CAMERA pathways (reconstructed)")
   run_camera(input,config,out_dir,label)
-  message("6/8 Fig 4d pathway enrichment")
-  run_pathway_enrichment(input,results,config,out_dir,label)
-  message("7/8 Table S14 medication sensitivity (reconstructed)")
+  message("6/7 Table S14 medication sensitivity (reconstructed)")
   run_medication_sensitivity(input,results,config,out_dir,label)
-  message("8/8 Record versions and input checksums")
+  message("7/7 Record versions and input checksums")
   write_csv(versions_table(),file.path(out_dir,"software_versions.csv"))
   files <- list.files(data_dir,pattern="\\.(csv|tsv)$",full.names=TRUE)
   write_csv(data.frame(File=basename(files),MD5=unname(tools::md5sum(files))), file.path(out_dir,"input_checksums.csv"))
   writeLines(c("Run completed.",label,
-    "Fig 4d and Table S14 are included. The offline enrichment demonstration uses fictional sets, not the Enrichr service; the medication model uses an explicit reconstructed contrast.",
+    "Table S14 uses an explicit reconstructed medication contrast.",
     "See docs/METHODS_AND_PROVENANCE.md for reconstructed versus verified analytical components."), file.path(out_dir,"RUN_COMPLETED.txt"))
   message("Completed. Output folder: ",basename(out_dir))
 }

@@ -75,32 +75,6 @@ if (file.exists(camera_file)) {
     isTRUE(all.equal(d$FDR,stats::p.adjust(d$PValue,"BH"),tolerance=1e-12)),logical(1))),
     "CAMERA controls BH FDR separately within each variable")
 }
-# Fig 4d: independent small-example probability check and explicit universe.
-background <- sprintf("TEST_G%02d",1:20)
-membership <- data.frame(Pathway=c(rep("A",5),rep("B",4)),
-  GeneSymbol=c(background[c(1,2,5,6,7)],background[10:13]))
-ora <- local_overrepresentation(background[1:4],background,membership)
-fisher <- stats::fisher.test(matrix(c(2,2,3,13),nrow=2,byrow=TRUE),alternative="greater")$p.value
-check(abs(ora$PValue[ora$Term=="A"]-fisher)<1e-12,"Offline enrichment agrees with independent Fisher exact calculation")
-check(ora$PValue[ora$Term=="B"]==1 &&
-  isTRUE(all.equal(ora$FDR,stats::p.adjust(ora$PValue,"BH"))),"BH includes tested zero-overlap pathways")
-empty <- local_overrepresentation(character(),background,membership)
-check(all(empty$PValue==1) && all(empty$FDR==1),"Empty enrichment query gives no enrichment")
-extra <- rbind(membership,data.frame(Pathway="A",GeneSymbol="UNMEASURED"))
-check(isTRUE(all.equal(ora,local_overrepresentation(background[1:4],background,extra))),
-  "Unmeasured reference genes do not inflate the background or set size")
-gene_lists <- enrichment_gene_lists(input,a,config)
-check(length(gene_lists$background)==400 && !anyDuplicated(gene_lists$background),
-  "Enrichment counts unique measured genes, not repeated assays")
-fixture <- data.frame(Term="TEST_SET",P.value=.001,Adjusted.P.value=.02,Overlap="2/5",Genes="TEST_G01;TEST_G02")
-normalised <- normalise_enrichr(fixture)
-check(normalised$FDR==.02 && normalised$Count==2 && normalised$PathwaySize==5,
-  "Enrichr adapter retains supplied adjusted p-values and overlaps")
-guard_cfg <- config; guard_cfg$enrichment_mode <- "enrichr_live"; guard_cfg$allow_enrichr_network <- FALSE
-guard_out <- file.path(temporary,"network_guard"); dir.create(guard_out)
-error <- tryCatch({run_pathway_enrichment(input,a,guard_cfg,guard_out,"SYNTHETIC DEMONSTRATION"); ""},error=function(e) conditionMessage(e))
-check(grepl("allow-enrichr-network",error,fixed=TRUE),"Live Enrichr cannot run without explicit network selection")
-
 # Table S14: preserve primary model and independently verify the estimand.
 ids <- input$pheno$PatientID[input$pheno$Phenotype=="higherEF"]
 baseline <- fit_medication_response(input,ids)
