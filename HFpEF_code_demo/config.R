@@ -1,4 +1,4 @@
-# Explicit analysis settings. See docs/METHODS_AND_PROVENANCE.md before reuse.
+# Explicit analysis settings. Please see docs/METHODS_AND_PROVENANCE.md before reuse.
 config <- list(
   groups = c("Control", "higherEF", "lowerEF"),
   fdr = 0.05,
